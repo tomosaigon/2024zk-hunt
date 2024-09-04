@@ -17,6 +17,23 @@ You will need circom and snarkjs, installation instructions [here](https://docs.
 Run `yarn` to install all dependencies. If you run into a weird error about `remote-ls` failing, then try running
 `git config --global url."https://".insteadOf git://`, and then running `yarn` again.
 
+# Run This
+
+```
+npm install -g yarn@1.22.10
+git config --global url."https://".insteadOf git://
+yarn
+npm install -g snarkjs@v0.5.0
+cd packages/circuits; node prepareAllCircuits.js; cd ../..
+yarn start
+yarn deploy
+
+# post
+rm -rf ~/.foundry/anvil/tmp/*
+```
+
+(`yarn prepareAllCircuits` fails)
+
 Inside `packages/circuits`, run `node prepareAllCircuits.js` to perform the powers of tau ceremony, and compile all the ZK circuits.
 
 `yarn start` will start both the local anvil node and the client, press `2` to show the client console output, and restart it if it fails. `yarn deploy` in a separate console will deploy the game contracts, and give
